@@ -89,7 +89,7 @@ final Map _effectMap = <PageTransitionType, Function>{
       TransitionEffect.createRipple(origin: ClipperOrigin.middle),
   PageTransitionType.slidePageLeft: TransitionEffect.createSlide(
     animationTween: t1,
-    secondaryAnimationTween: t9,
+    secondaryAnimationTween: tp9,
   ),
   PageTransitionType.slidePageRight: TransitionEffect.createSlide(
     animationTween: t2,
