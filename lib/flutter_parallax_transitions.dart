@@ -8,10 +8,15 @@ import 'src/tweens.dart';
 
 export 'src/transition_types.dart';
 
-TransitionEffect transitionEffect = TransitionEffect();
+typedef TransitionWidgetBuilder = Widget Function(
+  Curve,
+  Animation<double>,
+  Animation<double>,
+  Widget,
+);
 
-final Map _effectMap = <PageTransitionType, Function>{
-  PageTransitionType.custom: transitionEffect.customEffect,
+final Map _effectMap = <PageTransitionType, TransitionWidgetBuilder>{
+  PageTransitionType.custom: TransitionEffect().customEffect,
   PageTransitionType.fadeIn: TransitionEffect.createFadeIn(),
   PageTransitionType.transferRight: TransitionEffect.createTransfer(
     animationTween: t1,

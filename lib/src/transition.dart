@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../flutter_parallax_transitions.dart';
+
 enum ClipperOrigin { leftUp, rightUp, leftDown, rightDown, middle }
 
 class RippleClipper extends CustomClipper<Path> {
@@ -35,7 +37,7 @@ class RippleClipper extends CustomClipper<Path> {
 }
 
 class TransitionEffect {
-  late Function _customEffect;
+  late TransitionWidgetBuilder _customEffect;
 
   TransitionEffect() {
     _customEffect = (
@@ -48,13 +50,13 @@ class TransitionEffect {
     };
   }
 
-  Function get customEffect => _customEffect;
+  TransitionWidgetBuilder get customEffect => _customEffect;
 
-  set createCustomEffect(Function handle) {
+  set createCustomEffect(TransitionWidgetBuilder handle) {
     _customEffect = handle;
   }
 
-  static Function createFadeIn() {
+  static TransitionWidgetBuilder createFadeIn() {
     return (
       Curve curve,
       Animation<double> animation,
@@ -64,7 +66,7 @@ class TransitionEffect {
         FadeTransition(opacity: animation, child: child);
   }
 
-  static Function createTransfer({
+  static TransitionWidgetBuilder createTransfer({
     required Tween<Offset> animationTween,
     required Tween<Offset> secondaryAnimationTween,
     required Tween<double> animationScaleTween,
@@ -132,7 +134,7 @@ class TransitionEffect {
     };
   }
 
-  static Function createSlideIn(Tween<Offset> tween) {
+  static TransitionWidgetBuilder createSlideIn(Tween<Offset> tween) {
     return (
       Curve curve,
       Animation<double> animation,
@@ -146,7 +148,7 @@ class TransitionEffect {
         );
   }
 
-  static Function createSlide({
+  static TransitionWidgetBuilder createSlide({
     required Tween<Offset> animationTween,
     required Tween<Offset> secondaryAnimationTween,
   }) {
@@ -165,7 +167,7 @@ class TransitionEffect {
         );
   }
 
-  static Function createZoomSlide({
+  static TransitionWidgetBuilder createZoomSlide({
     required Tween<Offset> animationTween,
     required Tween<double> secondaryAnimationTween,
   }) {
@@ -184,7 +186,7 @@ class TransitionEffect {
         );
   }
 
-  static Function createRipple({required ClipperOrigin origin}) {
+  static TransitionWidgetBuilder createRipple({required ClipperOrigin origin}) {
     return (
       Curve curve,
       Animation<double> animation,
