@@ -39,7 +39,7 @@ Tween<Offset> t9 = Tween<Offset>(
 );
 Tween<Offset> tp9 = Tween<Offset>(
   begin: Offset.zero,
-  end: const Offset(-0.8, 0.0),
+  end: const Offset(-1.0, 0.0),
 );
 Tween<Offset> t10 = Tween<Offset>(
   begin: Offset.zero,
