@@ -15,7 +15,7 @@ typedef TransitionWidgetBuilder = Widget Function(
   Widget,
 );
 
-final Map _effectMap = <PageTransitionType, TransitionWidgetBuilder>{
+final Map<PageTransitionType, TransitionWidgetBuilder> _effectMap = {
   PageTransitionType.custom: TransitionEffect().customEffect,
   PageTransitionType.fadeIn: TransitionEffect.createFadeIn(),
   PageTransitionType.transferRight: TransitionEffect.createTransfer(
@@ -110,15 +110,10 @@ final Map _effectMap = <PageTransitionType, TransitionWidgetBuilder>{
   ),
 };
 
-Function(Curve, Animation<double>, Animation<double>, Widget child) getEffect(
+TransitionWidgetBuilder getEffect(
   PageTransitionType type,
 ) {
-  return _effectMap[type] as Function(
-    Curve,
-    Animation<double>,
-    Animation<double>,
-    Widget child,
-  );
+  return _effectMap[type]!;
 }
 
 class PageTransition extends PageRouteBuilder {
