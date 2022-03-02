@@ -149,7 +149,7 @@ class PageTransition extends PageRouteBuilder {
               animation,
               secondaryAnimation,
               child,
-            ) as Widget;
+            );
           },
         );
 }
